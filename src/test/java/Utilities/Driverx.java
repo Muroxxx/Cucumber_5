@@ -14,23 +14,35 @@ public class Driverx {
 
     public static WebDriver driversx;
 
-    public static WebDriver elements(){
-        Logger logger=Logger.getLogger("");
+    public static WebDriver elements() {
+        Logger logger = Logger.getLogger("");
         logger.setLevel(Level.SEVERE);
-        System.setProperty(EdgeDriverService.EDGE_DRIVER_SILENT_OUTPUT_PROPERTY,"true");
+        System.setProperty(EdgeDriverService.EDGE_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 
 
-        if (driversx==null) {  //only use for one time
-           EdgeOptions options = new EdgeOptions();
-            // ChromeOptions options1=new ChromeOptions();
-            // driversx=new ChromeDriver(options1);
+        if (driversx == null) {  //only use for one time
+            EdgeOptions options = new EdgeOptions();
+            options.addArguments("--remote-allow-origins=*");
             driversx = new EdgeDriver(options);
 
         }
         return driversx;
 
 
-
-
     }
+
+    public static void quit() {
+        {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            if (driversx!=null)
+                driversx.quit();
+            driversx=null;
+        }
+    }
+
+
 }
