@@ -28,11 +28,23 @@ public class DialogContent extends parent{
     public WebElement loginbutton;
 
 
+    @FindBy(css="span[class='mat-tooltip-trigger logo-text']")
+    public WebElement txtTechnoStudy;
+
+
     public void findclick(WebElement element){
         clickfunc(element);
     }
 
-    public void findsend(WebElement element,String text){
-        sendkeysfunc(element,text);
+
+    public void finds(WebElement element,String text){
+
+        WebElement myelement=null;
+        if (element == username)
+            myelement=username;
+
+
+
+        sendkeysfunc(myelement,text);
     }
 }

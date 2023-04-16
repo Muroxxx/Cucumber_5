@@ -26,10 +26,14 @@ public class Driverx {
             driversx = new EdgeDriver(options);
 
         }
+
+        driversx.manage().window().maximize();
         return driversx;
 
 
+
     }
+
 
     public static void quit() {
         {
